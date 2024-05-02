@@ -31,7 +31,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: poduction file
-        path: ./adopt-me/build
+        path: ./src/build
   deploy:
     name: Deploy
     needs: build
@@ -41,10 +41,10 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: poduction file
-          path: ./adopt-me/build
+          path: ./src/build
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.ACTIONS_DEPLOY_ACCESS_TOKEN }} 
-          publish_dir: ./adopt-me/build
+          publish_dir: ./src/build
